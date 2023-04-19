@@ -1,0 +1,144 @@
+\section{Vorlesung 5}
+
+\eq{II16}{
+	V(x) = - \int_{\x_0}^{\x_1} \vec{F}(\x') d\x'
+}
+
+\eq{II17}{
+	\nabla \times \vec{F} (\x) = 0 
+}
+
+Diese bedingung \ref{eq:II17} ist hinreichend damit \ref{eq:II16} konservative Kraft ist, da jeder Weg aus infinitesimalen Stuecken zusammengesetzt werden kann.
+
+
+Aus \ref{eq:II16} folgt:
+
+\eq{II18}{
+	\vec{F}(\x) = - \nabla V(\x) = - grad V(\x) 
+}
+
+Die folgenden Aussagen sind aequivalent:
+
+\begin{itemize*}
+	\item die totale Energie $E_{tot} = \half m \vec{v}(t) - - \int_{\x_0}^{\x_1} \vec{F}(\x') d\x'$ ist 
+	unabhaengig von t
+
+	\item Es exisitert eine potenzielle Energie $V(\x)$, sodass $\vec{F}(\x) = - \nabla V(\x)$ 
+
+	\item Kraft haengt nur von $\x$ ab, mit $\nabla \times \vec{F$} (\x) = 0 $
+\end{itemize*}
+
+
+
+Beachte: Kinetische Energie ist erhalten, wenn $\vF (\x, \vec{v}, t)$ immer senkrecht zur Bewegungsrichtung ist:
+$\vF = \vec{f}(\x, \vec{v}, t) \times \vec{v}$ Denn: men leistet keine Arbeit gegen diese Kraft, $\vF \cdot \vec{v} = 0$
+$\vF$ ist nicht durch potenzielle Energie darstellbar.
+
+
+\subsubsection{Zentralkreafte}
+
+Wichtiges bsp fuer konservative Kraefte sind Zentralkraefte;
+
+Dabei sei der Ursprung des Koordiantensystems im Kraftzentrum.
+
+\eq{II19}{
+	\vF(\x) = F_c(|\x|) * {\x \over |\x|}
+}
+
+Um zu zeigen, dass die Rotation verschwindet, betrachten wir zuerst die partiellen Ableitungen von $|\x|$:
+
+\eq{II20}{
+	|\x| &= \sqrt{x^2 + y^2 + z^2}
+	&\rightarrow \pdiff{|\x|}{x} = {2 x \over x * \sqrt{x^2 + y^2 + z^2}} = {x \over |\x|} 
+}
+
+
+\eq{II21}{
+	\nabla \times \vF 
+	&= \pdiff{F_z}{y} - \pdiff{F_z}{z} 
+	= \pdiff{}{z} (\tilde{F}(|\x|) z ) - \pdiff{}{z} (\tilde{F} (|\x|) y) \\
+	&= \diff{\tilde{F}(|\x|)}{|\x|} [z \pdiff{|\x|}{y} - y \pdiff{|\x|}{z}]\\
+	&= \diff{\tilde{F}(|\x|)}{|\x|} [z {z \over |\x|} - y {z \over |\x|}] 
+	= 0
+}
+
+y,z Komponente analog \rightarrow $\nabla \times \vF = 0$
+
+Berechnen der potenziellen Energie:
+
+\eq{II22}{
+	dV =\ref{eq:II16} - [F_x dx + F_y dy + F_z dz]
+	= \ref{eq:II19} {F_c(|\x|) \over |\x|} (x dx + y dy + z dz)
+	= -F_c (|\x|)d|\x|
+}
+
+Denn:
+
+\eq{}{ %label might be on the wrong equation
+	d|\x| &= \pdiff{|\x|}{x} dx + \pdiff{|\y|}{y} dy + \pdiff{|\z|}{z} dz \\
+	&= {x \over |\x|} dx + {y \over |\x|} dx + {z \over |\x|} dx
+}
+
+
+Berechnen von $V(x) = V(|\x|)$ ist unabhaengig von Weg, da $F_c$ nur von der skalaren Groesse $|\x|$ abhaengt: Wie im 1-Dim Fall.
+
+\eq{II23}{
+	V_c(|\x|) = - \int_{|\x_0|}^{|\x_1|} F_c (r) dr
+}
+
+Beispiel: Gravitation \footnote{vgl \ref{eq:II9}}
+
+\eq{II24}{
+	\vF_G = -{ G M m \over |\x|} {\x \over |\x|} 
+	\rightarrow V_G 
+	= \int_\infty^{|\x|} {G M m \over r^2} dr 
+	= - {G M m \over |\x|}
+}
+
+
+Beachte:
+
+Rotation ist invariant under Verschiebungen: Kraftzentrum kann bei beliebigen $\x_0$ liegen, siehe \ref{eq:P1}
+\eq{P1}{
+	\nabla_x (\tilde{F}(| \x - \x_0|) (\x - \x_0)) 
+	= \mat{
+		\pdiff{}{(x - x_0)} \diff{ x - x_0}{x} \\
+		... \\
+		...			
+	} \times \tilde{F}(| \x - \x_0|) (\x - \x_0)
+	= 
+}
+
+
+
+Summe von Zentralkraeften ist Konservativ (aber keine Zentralkraft)
+\eq{II26}{
+	\nabla_\x \times \sum_{i=1}^N \vF_i (\x - \x_i)
+	= \sum_{i=1}^N [ \nabla_\x \times \vF_i (\x - \x_i)] = 0
+}
+
+
+
+\section{Newton Formalismus}
+
+Bewegung in (x, y) Ebene, beschrieben in Polarkoordinaten. \footnote{hier kaeme eine skizze}
+
+\eq{II27}{
+	x = r \cos \phi, y = r \sin \phi 
+}
+
+\eq{II28}{
+	\x = \e_x r \cos \phi  + \e_y r \sin \phi \\
+	|\e_x| = |\e_y| = 1 
+}
+
+\eq{II29}{
+	d \x &= \e_x (dr \cos \phi - r \sin \phi d \phi) + \e_y (dr \sin \phi + r \cos \phi d\phi)\\
+	&= dr (\e_x \cos \phi + \e_y \sin \phi) + r d\phi (\e_y \cos \phi - \e_x \sin \phi) \\
+	&\rightarrow \e_r = (\e_x \cos \phi + \e_y \sin \phi)\\
+	&\rightarrow \e_phi = (\e_y \cos \phi - \e_x \sin \phi)\\
+}
+
+\eq{II30}{
+	\rightarrow \vec{v} = \diff{\x}{t} = \dot r \e_r + r \dot \phi \e_\phi
+}
