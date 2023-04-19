@@ -1,0 +1,259 @@
+\title{Vorlesung 3}
+
+\section{Im Allgemeinen (1-Dim)}
+
+\eq{1dForce}{m \ddot x = F(x, \dot x, t)}
+
+ist eine gewoehnliche DIfferentialgleichung 2. Ordnung => braucht 2 Randbedingungen zum Loesen.
+
+Am einfchsten: lege $x(t_0), \dot x(t_0)$ fest, dann ist $x(t)$ eindeutig bestimmt.
+
+Numerische Loesung:
+
+Fange an bei $t = t_0$. $a(t_0) = {F(x(t_0), \dot x(t_0), t_0) \over m}$
+
+Zur Zeit $t = t_0 + \Delta t$, mit $\Delta t$ inifinitesimal: 
+
+\eq{}{v(t_1) = v(t_0) + \Delta t \cdot a(t_0)}
+\eq{}{x(t_1) = x(t_0) + \Delta t \cdot v(t_0)}
+\eq{}{a(t_1) = {F(x(t_1), \dot x(t_1), t1) \over m}}
+etc.\\
+
+
+Laplacesche Behauptung:
+Gib mir die Koordinaten \& Geschwindigkeiten aller Koerper in einer feten Zeit und ich kann die Zukunft vorhersagen.\\
+
+Aber:
+\begin{enumerate}
+	\item man kennt nicht alle kraefte
+	\item in vielen Faellen haengt die Bahnkurve sehr sensitiv von den Anfangsbedingungen ab:
+	Falls $x(t_0) -> x(t_0)(1 + \epsilon), |\epsilon| << 1, {x'(t) - x(t) \over x(t)}$ kann recht bald $O(1)$ werden. \footnote{$O(1)$ ist die Groessenordnung von 1, bedeutet hier, dass der Fehler 100\% wird.}
+
+	 ``chaotische'' Systeme, ``deterministisches Chaos''
+
+	 Beachte: $X(t_0), \dot x(t_0)$ immer nur mit endlichen Genauigkeiten bekannt.
+\end{enumerate}
+
+\subsection{Methoden zum Loesen der Bewegungsgleichung (1-dim)}
+
+\subsubsection*{F haengt nur von x ab}
+\eq{}{m \ddot x = m {dv \over dt} = F(x)}
+Kettenregel:
+\eq{}{
+	{dv \over dx} 
+	= {dv \over dx} {dx \over dt} 
+	= v \cdot {dv \over dx}
+}
+
+\eq{}{mv {dv \over dx} = F(x) \text{Trennung der Variablen}}
+
+\eq{}{
+	&m \int_{v_0}^{v} v' dv' 
+	= \int_{x_0}^{x} F(x') dx'\\
+	&=> {1\over 2} m (v^2(x) - v^2(x_0)) \\
+	&=> v(x) = \pm [v^2(x_0) + {2\over m} \int_{x_0}^{x} F(x')dx']^{1 \over 2}\\
+	&=> \pm \int_{x_0}^{x} {dx' \over [{2\over m} \int_{x_0}^{x} F(x')dx' + v^2(x_0)]^{1 \over 2}]^{1\over 2}}
+}
+
+\subsubsection*{F haengt nur von v ab}
+
+\eq{}{
+	m {dv \over dt} = F(v)\\
+	=> m \int_{v_0}^{v} {dv' \over F(v')} 
+	= \int_{t_0}^t dt' = t - t_0
+}
+
+loese nach $v(t)$ auf:
+\eq{}{
+	x(t) = x(t_0) + \int_{t_0}^{t} v(t') dt'
+}
+
+\subsubsection*{F haengt nur von t ab}
+
+\eq{}{
+	m {dv \over dt}
+	= F(t)
+}
+
+\eq{}{
+	m [v(t) - v(t_0)]
+	= \int_{t_0}^{t} F(t') dt'
+}
+
+\eq{}{
+	x(t) = x(t_0) + v(t_0) \cdot (t - t_0)
+	+ {1 \over m} \int_{t_0}^{t} dt' 
+	\int_{t_0}^{t} dt'' F(t'')
+}
+
+\subsubsection*{``Durch geschickten Ansatz''}
+
+Beispiel:\\
+Angetriebener, gedaempfter harmonischer Oszillator.\footnote{hier kommt eine tolle skizze von einem harmonischen oszillator hin}
+
+$x$: Auslenkung aus Ruhelage (fuer $F_{ext} = 0$)
+
+\eq{I34}{
+	m \ddot x = - k x - b \dot x + F \cos(\omega t)\\
+	=> \ddot x + 2 \gamma \dot x + \omega^2 x
+	= f \cos(\omega t)
+}
+
+mit
+\eq{gamma_def}{
+	\gamma = {b \over 2 m}
+}
+
+\eq{omega_def}{
+	\omega = \sqrt{{k \over m}}
+}
+
+\eq{f_def}{
+	f = {f \over m}
+}
+
+
+Inhomogene gewoehnliche Differenzialgleichung. Allgemeine Loesung.
+
+\eq{}{
+	x(t) &= [\text{allgemeine Loesung d. homogenen DiffGl.}]\\ 
+	&+ \text{spezielle Loesung der homogenen Gleichung}
+}
+
+
+Fuer spezielle Loesung definiere Komplexe Beschleunigung $f e^{i \omega t}$ und komlexe Koordinate $z$, mit
+\eq{I36}{
+	\ddot x + 2 \gamma \dot z + \omega_0^2 z 
+	= f e^{i \omega t}
+}
+
+Funktioniert, da \ref{eq:I34} linear ist: Keine Terme mit $x^2, \dot x^2$ etc.
+
+Ansatz:
+\eq{I37}{
+	z{t} = {f \over R} e^{i \omega t}, R = const
+}
+
+\eq{helper}{
+	\dot z(t) 
+	= i \omega z(t), \ddot z(t) 
+	= - \omega^2 \cdot z(t)
+}
+
+durch einsetzen \ref{eq:helper} in \ref{eq:I36} ergibt sich:
+\eq{}{
+	[- \omega^2 + 2 i \omega \gamma + \omega_0^2]
+	= 1\\
+	=> R = \omgea_0^2 + \omega^2 + 2 i \omega \gamma
+	= r e^{i \theta}, r, t \in \Re
+}
+
+\eq{I39}{
+	\tan \theta = {Im(R) \over Re(R)}
+	= {2 \omega \gamma \over \omega_0^2 - \omega^2}
+}
+
+Beachte: \ref{eq:I37} ist nicht die allgemeinste Loesung. Es wird weiterhin eine Loesung der homogenen Gleichung benoetigt um die Anfangsbedingungen zu erfuellen.
+
+Fuer feste f: maximale Auslenkung ${f \over r}$ am groessten wenn $r^2$ minimiert wird.
+
+\eq{I40}{
+	&\diff{r^2}{\omega^2} = 2 (\omega^2 - \omega_0^2)
+	+ 4 \gamma^2
+	= \sigma\\
+	&=> \omega_r^2 = \omega_0^2 - 2 \gamma^2
+} 
+
+\eq{I41}{
+	r^2(\omega_r) = 4 \gamma^2 (\omega_0^2 - \gamma^2)
+}
+
+Fuer schwache Daempfung, $\gamma^2 << \omega_0^2: \omega_r \approx \omega_0:$ Eigenfrequenz der Schwingung:
+\eq{}{
+	\tan \theta 
+	= {2 \omega \gamma \over \omega_0^2 - \omega^2}
+	= {2 \omega \gamma \over (\omega_0 + \omega)(\omega_0 - \omega)}
+	\approx \footnote{$\omega_r \approx \omega_0$}
+	{\gamma \over \omega_0 - \omega}
+}
+
+Allg Loesung: fuer $\gamma < \omega_0$: unter-kritisch
+\eq{I42}{
+	x(t) = C e^{-\gamma t} \cos(\Omega t + \alpha)
+	+ {
+		f \over [(\omega_0^2 - \omega^2)^2 
+		+ 4 \gamma^2 \omega^2]^{1\over 2}
+	} \cos[\omega t - \arctan({2 \gamma \omega \over \omega_0^2 - \omega^2})]
+}
+
+\eq{}{
+	\Omgea = \sqrt{\omega_0^2 - \gamma^2}
+}
+
+$C, \alpha$: Integrationskonstanten, (-> Anfangsbedingungen)
+
+Fuer externe Kraft $F_{ext} = m f \sin(\omega t)$ Loesung aus Imaginaer-Teil von \ref{eq:I37}
+
+Beliebige periodische externe Kraft: Durch Fourier-Zerlegung:
+\eq{I43}{
+	{1 \over m} F_{ext}(t) = \sum_{n=1}^\alpha 
+	[f_n \cos(n \omega t) + \~f_n \sin(n \omega t)]
+}
+
+Da \ref{eq:I36} linear ist: einsetzen in \ref{eq:I42} die spezielle Loesung durch entsprechende Summe spezieller Loesungen.
+
+\section{Kinetische und potenzielle Energie}
+
+Zunaechst in einer Dimension, fuer Koerper mit konstanter Masse:
+
+\eq{}{
+	m \ddot x 
+	= m \diff{v}{t} 
+	= \ddt (m v)
+	= F(x, v, t)
+}
+
+multiplizieren mit v
+
+\eq{}{
+	&v \ddt (m v) = v F(x, v, t)\\
+	&\ddt ({1\over 2} m v^2)
+}
+
+Integrieren nach t ergibt
+
+\eq{II1}{
+	{1 \over 2} m (v^2(t_2) - v^2(t_1))
+	= \int_{t_1}^{t_2} \diff{x}{t} F(x, v, t)
+	= \int_{x(t_1)}^{x(t_2)} F(x, v, t) dx
+}
+
+Definiere Kinetische Energie:
+\eq{II2}{E_{kin} = {1\over 2} m v^2}
+
+Die Gleichung \ref{eq:II1} besagt: Aenderung der kinetischen Energie entspricht der geleisteten Arbeit.
+
+\eq{II3}{
+	W = \int_{x_1}^{x_2} F(x, v(x), t(x)) dx
+}
+
+Im Allgemeinen muessen wir $x(t)$ kennen um \ref{eq:II3} berechnen zu koennen; kenntnis von $x_1 = x(t_1)$ und $x_2 = x(t_2)$ ist nicht ausreichend. 
+
+Wichtiger Spezialfall: F haengt nur von  ab.
+
+=> definiere potenzielle Energie 
+\eq{II4}{
+	V(x) = \int_{x_n}^{x} F(x') dx'
+}
+
+In diesem Fall:
+\eq{II5}{
+	\int_{x_1}^{x_2} F(x) dx = V(x_2) - V(x_1)\\
+	=> \ref{eq:II1} E_{kin}(t_2) - E_{kin}(t_1)
+	= V(x_2) - V(x_1)
+}
+
+\eq{II6}{
+	=> E_{kin}(t_1) + V(x(t_1)) = E_{kin}(t_2) + V(x(t_2))\\
+	=> E_{tot} = E_{kin} + V \text{ist erhalten! Bedingung: F haengt nur von x ab}
+}

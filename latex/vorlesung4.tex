@@ -1,0 +1,192 @@
+\section*{Vorlesung 4}
+
+GLeichung \ref{eq:II4} aufgeloest nach F:
+\eq{II7}{
+	F(x) = \diff{V(x)}{x}
+}
+
+is nicht abheangig von $x_n$ => wahl von $x_n$ ist beliebig.
+
+Eine Kraft die wie \ref{eq::II7} ausgedrueckt werden kann heisst konservativ.
+
+Fuer 1-dim Bewegung ist \ref{eq:II7} hinreichend und notwendig fuer ENergieerhaltung.
+
+\subsubsection*{Beispiel}
+
+Hooksches Gesetz, $F_H \ref{eq:I15} = - k x$. Waehle $x_0 = 0$ => 
+\eq{II8}{
+	V_H = {1\over 2} K x^2
+}
+
+Harmonischer ungedaempfter Oszillator:
+\eq{}{
+	x(t) = c * \cos(\omega_0 t + \alpha)
+	\omega_0 = \sqrt{k \over m}
+}
+
+\newcommand{\half}{{1\over 2}}
+\eq{}{
+	\dot x &= - \omega_0 C \sin(\omega_0 t + \alpha)\\
+	=> \half m \dot x^2  + \half k x^2  
+	&= 
+		\half m \omega_0^2 C^2 \sin^2(\omega_0 t 
+		+ \alpha) + \half k C^2 \cos^2(\omega_0 t 
+		+ \alpha)\\
+	&= \half K C^2 = const.
+}
+
+Durch Ausnutzen der ENergieerhaltung koennen wir nach $\dot x$ aufloesen
+=> nun haben wir eine DGL 1. Ordnung!
+(Beispiel \ref{eq:I28})
+
+\subsection{Vermutlich ein neuer Sinnabschnitt}
+
+Falls F explizit von $\dot x$ oder $t$ abhaengt ist $E_{tot}$ (des Koerper) nicht erhalten.
+
+\begin{itemize}
+	\item F haengt von $\dot x$ ab (Reibung): Koerper verliert Energie als Waerme  and die Umgebung
+
+	\item F haengt von t ab: ``Treibende Kraft'', System ist nicht abgeschlossen. Im abgeschlossenen System ist die Gesamtenergie erhalten.
+\end{itemize}
+
+\subsubsection{Anwendung}
+Fluchtgeschwindigkeit
+
+Gravitationspotenzial
+
+\eq{II9}{
+	V(x) &= \int_{-\infty}^{x} (- {G m m_E \over x^2}) dx \\
+	&= -G m m_E \int_\infty^x {dx' \over x'^2}\\
+	&= {G m m_E \over x'}
+	=\ref{eq:I13} {m g R_e^2 \over x} 
+}
+
+Fluchtgeschwindigkeit:
+\eq{}{
+	V(x -> \infty) -> 0 \text{d.h.:} E_{tot} = 0
+}
+
+
+D.h. am Startpunkt, $x = R_E$ ist $\half m v_f^2 - m g R_e = 0 $
+\eq{II10}{
+	v_f = \sqrt{2 g R_e} \approx 11 {km\over s}
+}
+
+\subsection{In 3 Dimensionen}
+
+Wir beschreiben Bewegung durch Vektoren $\x$.
+
+Definition: Vektoren sind Groessen, die sich unter Roatationen um den Ursprung verhalten wie $\x$.
+
+$\x =\ref{eq:I6} \vec{O} \x$ mit $O$ einer orthagonalen Matrix.
+
+Im kartesichend Koordinatensystem: 
+\eq{II11}{
+	\vec{a} = (a_x, a_y, a_z) = (a_1, a_2, a_3)
+}
+
+
+\newcommand{\va}{\vec{a}}
+\eq{II12}{
+	\va -> O \va \text{oder} \sum_i O_{i, j} a_j
+}
+\newcommand{\vb}{\vec{b}}
+
+$|\va| -> |\va|$, allgemeiner $\va \cdot \vb = \sum_i a_i b_i -> \va \cdot \vb$ ist invariant.
+
+In n Dimensionen $O$ hat hat ${n (n - 1) \over 2}$ freie Parameter.
+
+\eq{II13}{
+	n = 2: O 
+	= \mat{ 
+		\cos \alpha & \sin \alpha \\ 
+		- \sin \alpha & \cos \alpha
+	}
+}
+
+
+n=3 3 Winkel z.B $\tensor{O}$ als Produkt von Rotationen.
+
+Masse ist ein Skalar => F ist ein Vektor
+
+Kreuzprodukt ist ein vektor:
+\eq{}{
+	(\va \times \vb)_i = \sum_{j, k} \et a_j b_k 
+} 
+
+$\et$ ist total anti-symmetrisch
+
+\eq{}{
+	(\va \times \vb)_i \rightarrow
+	&\sum_{j, k} \sum_{j', k'} \et O_{j, j'} a_{j'} b{k'}
+	= \sum_{i', j', k'} \epsilon_{i', j', k'} O_{j, j'} O_{k, k'} a_{j'} b_{k'} \\
+	&= \sum_{i'} O_{i, i'} (\va \times \vb)_{i'}
+}
+
+Muessen zeigen: \footnote{what the actual fuck?! thank you for coming to my TED talk}
+\footnote{the indices might be very fucking wrong, someone please check them!! (text me if you find errors!)}
+\footnote{ok, i give up. you can't read shit this dude writes and his explenations are bad at best. someone please give me handwritten notes and i'll add the proofs in!}
+\eq{}{
+	\sum_{j', k'} \et O_{j, j'} O_{k, k'} 
+	= \sum_{i'} \epsilon_{i', j', k'} O_{i, i'}
+}
+
+$j' = k'$: Beide Seiten $=0$. $\et = - \epsilon_{i, k, j}$, $O_{i, j} O_{k, j'} = O_{k, j'} O_{j, j'}$
+
+$j' = 2$, $k' = 3$ \footnote{some eqauations have been omitted}
+
+
+
+\subsubsection{Spiegelungen}
+$\x \rightarrow - \x$ echte Vektoren aendern ihr Vorzeichen unter Spiegelung. 
+z.B.: $\vec{v} \rightarrow - \vec{v}$, $\vec{a} \rightarrow - \vec{a}$ aber wenn $\va, \vb$ echte vektoren sind, dann $\va \times \vb \rightarrow (-\va)\times (- \vb) = \va \times \vb$ aendert sein Vorzeichen nicht.
+
+=> $\va \times \vb$ ist Pseudo- oder Axialvektor.
+
+\subsubsection{Konservative Kraefte in 3-Dim}
+Newton 2: $\ddt (m \vec{v}) = \vec{F}(\x, \vec{v}, t)$ 
+Jede Komponente von F kann von allen Komponenten von $\vec{v}, \x$ abhaengen.
+
+\eq{II15}{
+	&\rightarrow \ddt (m \vec{v}) = \vec{v} \vec{F}(\x, \vec{v}, t) \\
+	&\rightarrow \ddt (\half m \vec{v} \vec{v})
+	= \vec{F}(\x, \vec{v}, t) \cdot \diff{x}{t}\\
+	&\rightarrow d (\half m \vec{v}^2)
+	= \vec{F}(\x, \vec{v}, t) \cdot d\x\\
+	&\rightarrow E_{kin} (\x_2) - E_{kin} (\x_1)
+	= \int_{x_1}^{x_2} \vec{F}(\x, \vec{v}, t) d\x
+	\text{: Linienintegral}
+}
+
+
+Mechanische Energie ist nur dann erhalten, wenn die Arbeit unabhaengig von Weg $\x(t)$ ist. 
+Alle Bahnen mit $\x(t_1) = \x_1, \x(t_2) = \x_2$ muessen gleiche Ergebnisse liefern.
+Potenzielle Energie it nur dann definiert, falls $\vec{F}$ nicht explizit von oder $t$ abhaengt.
+
+\eq{II16}{
+	V(\x) = - \int_{x_1}{x_2} \vec{F}(\x) \cdot d\x
+}
+
+Die Gleichung \ref{eq:II16} ist nich automatisch wohl definiert!
+
+Wir betrachten ein infinitesimales Wegstueck in der (y, z) Ebene: \footnote{hier kaeme eine skizze}
+
+Zu zeigen: $V(\x)_{Weg 1} - V(\x)_{Weg 2} = 0 $ 
+
+\eq{}{
+	&= - [dz F_z(\x_n) + dy F_y(x_n, y_n, z_n + dz)]
+	+ [dy F_y(\x) + dz F_z (x_n, y_n + dy, z_n)]\\
+	&= dy [F_y (\x) - F_y(x_n, y_n, z_n + dz)]
+	+ dz [dz F_z(x_n, y_n + dy, z_n) - F_z(\x)] \\
+	&= -dy dz (\pdiff{F_y}{z} - \pdiff{F_z}{y})
+	= 0 \\
+	&\rightarrow \pdiff{F_z}{y} - \pdiff{F_y}{z} = 0\\
+	&\rightarrow (\nabla \times \vec{F})_x = 0
+}
+
+Durch analoge Betrachtung in (x, z) und (x, y) Ebene: $(\nabla \times \vec{F})_y = (\nabla \times \vec{F})_z = 0$
+
+Die Gleichung \ref{eq:II16} ist wohldefiniert, falls 
+\eq{II17}{
+	\nabla \times \vec{F} = rot F = 0
+}. Dies ist ein konservatives Kraftfeld.
