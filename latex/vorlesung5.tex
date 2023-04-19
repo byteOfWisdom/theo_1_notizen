@@ -35,7 +35,7 @@ $\vF = \vec{f}(\x, \vec{v}, t) \times \vec{v}$ Denn: men leistet keine Arbeit ge
 $\vF$ ist nicht durch potenzielle Energie darstellbar.
 
 
-\subsubsection{Zentralkreafte}
+\subsection{Zentralkreafte}
 
 Wichtiges bsp fuer konservative Kraefte sind Zentralkraefte;
 
@@ -119,7 +119,7 @@ Summe von Zentralkraeften ist Konservativ (aber keine Zentralkraft)
 
 
 
-\section{Newton Formalismus}
+\subsection{Newton Formalismus}
 
 Bewegung in (x, y) Ebene, beschrieben in Polarkoordinaten. \footnote{hier kaeme eine skizze}
 
@@ -141,4 +141,95 @@ Bewegung in (x, y) Ebene, beschrieben in Polarkoordinaten. \footnote{hier kaeme 
 
 \eq{II30}{
 	\rightarrow \vec{v} = \diff{\x}{t} = \dot r \e_r + r \dot \phi \e_\phi
+}
+
+
+\eq{II31}{
+	\rightarrow \va 
+	&= \dot \vec{v} 
+	= \ddot r \e_r + \dot r \dot \phi \e_\phi + \dot \phi \dot \e_\phi \\
+	&= \ddot r \e_r + 2 \dot r \dot \phi \e_\phi - r \ddot \phi \e_r \\
+	&= \e_r (\ddot r - r \dot \phi) - \e_\phi (2 \dot r \dot \phi + r \ddot \phi)
+}
+
+
+
+Kraft:
+
+\eq{II32}{
+	&\vF = \ddot r \e_r + F_\phi \e_\phi \rightarrow \\\text{Newton 2:  }
+	&m(\ddot r - r\ddot \phi) 
+	= F_r
+}
+
+\subsubsection{gekoppelte harmonische Oszillatoren}
+
+Hier: betrachtung insbesondere der Uebertragung von Energie \footnote{skizze von einem gekoppelten harmonischen Oszillator, mit Federkonstanten k, $\kappa$ und k, sowie 2 gleichen massen m und Auslenkungen $x_1, x_2$}
+
+Aufstellen der Bewegungsgleichung
+\eq{II33}{
+	m \ddot x_1 &= - k x_1 - \kappa (x_1 - x_2) \\
+	m \ddot x_2 &= - k x_2 - \kappa (x_2 - x_1)
+}
+
+Beachte:
+\begin{itemize}
+	\item Kraft auf 1. Koerper hangt von $x_1$  und $x_2$ ab $\rightarrow$ Energie des 1. Koerpers ist nicht erhalten.
+
+	\item Aber wir koennen eine gesamte potenzielle Energie definieren, die in allen 
+
+	Federn gespeichert ist:
+	$V(x) = \half [k x_1^2 + k x_2^2 + \kappa (x_1 - x_2)^2]$ \label{eq:II34}
+	
+	$\rightarrow$ die gesamte kinetische Energie des Systems ist erhalten.
+\end{itemize}
+
+
+Die Gleichungen \ref{eq:II33} sind gekoppelt. Sie koennen durch Addieren/Subtrahieren entkoppelt werden.
+
+\eq{II35}{
+	&m (\ddot x_1 + \ddot x_2) = - k (x_1 + x_2)
+	\rightarrow (x_1 + x_2) (t) = a_+ \cos(\omega_+ t + \alpha_+)\\
+	&\omega_+ = \sqrt{k \over m}
+}
+
+\eq{II36}{
+	m (\ddot x_1 - \ddot x_2) &= - k (x_1 - x_2) - 2 \kappa (x_1 - x_2) \\
+	&= - (k + 2 \kappa) (x_1 - x_2) \\
+	&\rightarrow (x_1 - x_2)(t) = a_- \cos(\omega_- t + \alpha_-) \\
+	&\omega_- = \sqrt{k + 2 \kappa \over m}
+}
+
+Dies sind die ``Eigenmoden'' des Systems. Die Gleichung \ref{eq:II35} beschreibnt den Fall, wo die mittlere Feder nicht 
+ausgelenkt ist. Die Koerper schwingen in Phase: $x_1 -  x_2 = 0$
+
+Die Gleichung \ref{eq:II36} beschreibt Schwingungen bei denen die mittlere Feder maximal ausgelenkt ist: $x_1 + x_2 = 0$
+
+In der Realitaet ist dies nicht immer der Fall. Man kann auch eine Ueberlagerung der beiden Eigenmoden haben.
+
+Allgemein:
+
+\eq{II37}{
+	x_1(t) &= \half [ (x_1 + x_2) + (x_1 - x_2)] \\
+	&= \half [a_+ \cos(\omega_+ t + \alpha_+ ) + a_- \cos(\omega_- t + \alpha_-)] \\
+	x_2(t) &= \half [ (x_1 + x_2) - (x_1 - x_2)] \\
+	&= \half [a_+ \cos(\omega_+ t + \alpha_+ ) - a_- \cos(\omega_- t + \alpha_-)]
+}
+
+Amplituden $a_+, a_-$, die Phasen $\alpha_+, \alpha_-$ aus den Anfangsbedingungen bestimmen, z.B.:
+
+\eq{}{
+	x_1(0) &= a \neq 0 \\
+	x_2(0) &= \dot \x_1 = \dot x_2 = 0
+}
+
+\eq{}{
+	\rightarrow x_1(t) &= {a \over 2} [\cos(\omega_+ t) + \cos(\omega_- t)] \\ 
+	&= x_2(t) = {a \over 2} [\cos(\omega_+ t) - \cos(\omega_- t)]
+}
+
+Benutze Additionstheoreme Sin/Cos: \footnote{die maybe nochmal kurz auflisten hier}
+
+\eq{}{
+	x_1 (t) = 
 }
