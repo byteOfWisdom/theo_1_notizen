@@ -1,0 +1,60 @@
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+
+\RequirePackage{hyperref}
+
+\hypersetup{
+	colorlinks = true,
+	linkcolor = blue,
+}
+
+
+\usepackage{geometry}
+\geometry{
+  paper=a4paper,
+  margin=54pt,
+  includeheadfoot
+}
+
+\newcommand{\vt}[3]{
+	\begin{pmatrix} 
+		#1 \\ 
+		#2 \\ 
+		#3 \\
+	\end{pmatrix}
+}
+
+\newcommand{\mat}[1]{
+	\begin{pmatrix} 
+		#1
+	\end{pmatrix}
+}
+
+
+\newcommand{\tensor}[1]{\stackrel{\leftrightarrow}{#1}}
+
+\newcommand{\x}{\vec{x}}
+\newcommand{\ddt}[1]{{d #1\over dt}}
+\newcommand{\rv}{\vec{r}}
+
+\newcommand{\pf}[2]{{\partial #1 \over \partial #2}}
+\newcommand{\ppf}[2]{{\partial^2 #1 \over \partial #2 ^2}}
+\newcommand{\e}{\hat{e}}
+\newcommand{\et}{\epsilon_{i, j, k}}
+
+\newcommand{\diff}[2]{{d #1 \over d #2}}
+\newcommand{\pdiff}[2]{{\partial #1 \over \partial #2}}
+
+\newcommand{\EQ}[2]{
+	\begin{align*}
+		\label{eq:#1}
+		#2
+	\end{align*}
+}
+
+\newcommand{\eq}[2]{
+	\begin{align}
+		\label{eq:#1}
+		#2
+	\end{align}
+}
