@@ -1,0 +1,223 @@
+\section{Vorlesung 6}
+
+\subsection{Allgemeiner Fall: Verschieden Massen und k}
+
+\newcommand{\w}{\omega{def}}
+
+\eq{II42}{
+	&\ddot x_1 + \w_{1, 1}^2 x_1 + \w_{1, 2}^2 = 0\\
+	&\ddot x_2 + \w_{2, 2}^2 x_2 + \w_{1, 2}^2 = 0
+}
+
+Spezialfall: 
+\eq{}{
+	w_{1, 1}^2 &= \w{1, 2}^2 = {k + \kappa \over m} (> 0)\\
+	w_{1, 2}^2 &= - {k \over m} (< 0)
+}
+
+Suche nach komplexen Loesungen 
+\eq{II43}{
+	x_1(t) = x_1 e^{\w t}\\
+	c_1 \in C
+}
+
+Gleichung \ref{eq:II43} in \ref{eq:II42} einsetzen:
+
+\eq{}{
+	()
+}
+
+In Matrixform:
+
+\eq{II44}{
+	\mat{
+		\w_{1, 1}^2 - \w^2 & \w_{1, 2}^2 \\
+		\w_{1, 1}^2 & \w_{1, 2}^2 - \w^2
+	} \cdot 
+	\mat{c_1 \\ c_2} 
+	= 0
+}
+
+Lineare homogen Gleichung \rightarrow [unleserlich]
+
+\eq{II45}{
+	[fehlt]
+}
+
+Die Loesungen \ref{eq:II45} sind die Eigenwerte der Matrix $\mat{\w_{1, 1}^2 & \w_{1, 2}^2 \\ \w_{1, 1}^2 & \w_{1, 2}}$. Die Gleichung \ref{eq:II44} kann auch als Eigenwert geschrieben werden.
+
+
+\eq{II46}{
+	\mat{
+		\w_{1, 1}^2 & \w_{1, 2}^2 \\
+		\w
+	}
+}
+
+muss ich nachher irgendwo abschreiben.
+
+
+
+\section{Lagrange und Hamilton Formalismus}
+
+Ziel: Systematische Herleitung der Bewegungsgleichungen in verallgemeinerten Koordinaten.
+
+Vorteile: 
+\begin{itemize}
+	\item Fuer konservative Systeme: Relativ einfache Herleitung der Bewegungsgleichung auch in nicht Kartesischen Koordinaten.
+
+	\item Grundlage beinahe aller modernen THeoretischen Physik (Quantenmechanik, Quantenfeldtheorie...)
+\end{itemize}
+
+Beachte: Die resultierenden Bewegungsgleichungen sind equivalten zu den newtonschen
+\rightarrow lineare Superposition
+
+\subsection{Verallgemeinerte Koordinaten}
+Fuer N-Koerper um 3D-Raum Brauchen wir 3N Koordinaten.
+
+Kartesisch: \eq{iii1}{\x_i(t) = (x(t), y(t), z(t)); i = 1...N}
+
+Sind meistens nicht so bequem \rightarrow verallgemeinerte Koordinaten
+
+
+\eq{iii2}{
+	\{q_k\} &\text{mit } \x_i = \x_i(q_k, t) \\
+	&\text{also } q_k = q(\x_i, t)
+}
+
+Beachte: 
+\begin{itemize}
+	\item $q_k$ brauchte keine Laenge zu sein. oft sind Winkel bequemer
+
+	\item Bezeichnung \ref{eq:iii2} koennen explizit von der Zeit abhaengen
+\end{itemize}
+
+
+Lagrange-Gl: Differenzialgleichungen 2. Ordnung fuer $q_k(t)$
+
+\subsection{Ein Koerper in einer Dimension}
+
+\eq{iii3}{
+	q(t) = q [ x(t), t]
+}
+
+Nach x aufgeloest:
+
+\eq{iii4}{
+	x(t) = x[q(t), t]
+	\x(t) 
+	= \pdiff{x}{q} \cdot \diff{q}{t} 
+	+ \pdiff{x[q, t]}{t}
+}
+\footnote{$\diff{q}{t}$ ist eine verallgemeinerte geschwindigkeit}
+
+Im Lagrange-Formalisumus werden $q$ und $\dot q$ als unabhaengige Variablen behandelt. Also $\pdiff{q}{\dot q} = 0$ und $\pdiff{\dot q}{q} = 0$
+
+Linearer Impuls:
+
+\eq{iii6}{
+	p_x = m \cdot \dot x
+	= \diff{}{x} (\half m \dot x^2)
+	= \diff{E}{x}
+}
+
+Analog verallgemeinerter Impuls:
+
+\eq{iii7}{
+	p_q &= \pdiff{E(q, \dot q, t)}{\dot q}
+	= \pdiff{}{q} [\half m \dot x(q, \dot q , t)]\\
+	&= \diff{E}{\dot x} \pdiff{\dot x}{\dot q}
+	= p_x \pdiff{x}{q} \\
+	&= \pdiff{x}{q} (???)
+}
+
+Gleichung \ref{eq:iii7} nach der Zeit abgeleitet:
+
+\eq{iii8}{
+	\dot p_q = \dot p_x \pdiff{x}{q} 
+	+ p_x \diff{}{t} (\pdiff{x}{q})
+}
+
+\eq{iii9}{
+	\diff{}{t} (\pdiff{x}{q}) = (\pdiff{}{q} \pdiff{x}{q} ) \dot q + \pdiff{}{t} (\pdiff{x}{q})
+}
+
+\eq{iii10}{
+	\pdiff{}{x} \rightarrow
+	\pdiff{}{q} \dot x 
+	= \pdiff{}{q} \pdiff{x}{q} 
+	+ \pdiff{}{q} \pdiff{x}{t}
+	= \diff{}{t} (\pdiff{x}{q})
+}
+
+Gl \ref{eq:iii10} in \ref{eq:iii8}
+
+\eq{}{
+	\dot p_q 
+	= \dot p_x \pdiff{x}{q} 
+	+ p_x \pdiff{}{q} \dot x
+	= F_x \pdiff{x}{q} + p_x \pdiff{\dot x}{q}
+}
+
+\eq{iii11}{
+	= F_x \pdiff{x}{q} + \diff{E_kin}{\dot x} \pdiff{x}{q} = Q + \pdiff{E_kin(\dot x(q, \dot q, t))}{q}
+}
+
+
+\eq{iii12}{
+	\text{mit } Q(q, \dot q, t) = F_x(x, \dot x, t) \pdiff{x}{q} \text{ : Verallgemeinerte Kraft}
+}
+
+Koennen Kraft F aufspalten in konservativen Teil und Rest:
+
+\eq{iii13}{
+	F_x(x, \dot x, t) = - \diff{V(x)}{x} + \tilde F(x, \dot x, t)\\
+	Q(q, \dot q, t) = - \diff{V}{x} \pdiff{x}{q}
+	+ \tilde F_x(x(q, t), \dot x(q, \dot q, t), t)
+}
+
+\eq{iii14}{
+	= - \pdiff{V(q, t)}{q} + \tilde Q
+}
+
+Beachte: V als Funktion von q, t hat (natuerlich) andere funktionale Form als V(x).
+
+z.B.: \eq{iii15}{
+	V(t) = \half k q ????????
+}
+
+Gleichung \ref{eq:iii14} in \ref{eq:iii11}:
+
+\ref{iii16}{
+	\dot p_q = \pdiff{}{q} (E_{kin} - V)+ \tilde Q
+	= \pdiff{L}{q} + \tilde Q
+}
+
+Lagrange Funktion
+\eq{iii17}{
+	L = E_{kin} (q, \dot q, t) - V(q, t)
+}
+
+Gleiche Form durch mehrere Koerper.
+
+
+Fuer $$, $$
+
+\eq{iii18}{
+	q &= x^2, x = \sqrt{q} \rightarrow \pdiff{x}{q} = {1 \over 2 \sqrt{q}}\\
+	&\rightarrow {1 \over 2 \sqrt{x}} \dot q 
+	\rightarrow E_{kin} = {m \over 2} \dot q^2 {1 \over 4 q} = {m \dot q^2 \over 8 q}
+}
+
+\eq{}{
+	p_q = m \dot x {1 \over 2 \sqrt{q}} = {m \dot q \over 4 q}
+}
+
+\eq{}{
+	\ddt ({m \dot q \over 4 q}) 
+	= \pdiff{}{q} ({m \dot q^2 \over 8 q} - \half k q)
+	= - {m \dot q^2 \over 8 q^2} - \half k\\
+	{m \ddot q \over 4 q} = {m \dot q^2 \over 4 q^2}
+}
+
+[hier fehlt die letzte gleichung]
